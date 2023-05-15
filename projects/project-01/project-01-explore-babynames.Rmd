@@ -48,12 +48,12 @@ library(tidyverse)
 # Read the csv file `file_name_names` as data frame `tbl_names`
 file_name_names <- here::here("data/names.csv.gz")
 tbl_names <- readr::read_csv(
-  file = ___, 
+  file = file_name_names, 
   show_col_types = FALSE
 )
 
 # Print `tbl_names`
-
+tbl_names
 ```
 
 ### Question 1: [Popular Names] What are the most popular names?
