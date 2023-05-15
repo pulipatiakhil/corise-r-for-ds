@@ -79,7 +79,7 @@ tbl_names_popular = tbl_names |>
     .groups = "drop"
   ) |> 
   # Group by sex 
-  groub_by(sex) |>  
+  group_by(sex) |>  
   # For each sex, keep the top 5 rows by number of births
   slice_max(nb_births, n = 5)
 
