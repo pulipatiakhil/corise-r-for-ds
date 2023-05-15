@@ -79,7 +79,7 @@ tbl_names_popular = tbl_names |>
     .groups = "drop"
   ) |> 
   # Group by sex 
-  groub_by(sex) |>  
+  group_by(sex) |>  
   # For each sex, keep the top 5 rows by number of births
   slice_max(nb_births, n = 5)
 
@@ -97,7 +97,7 @@ tbl_names_popular |>
   # Reorder the names by number of births
   mutate(name = fct_reorder(name, nb_births)) |>
   # Initialize a ggplot for name vs. nb_births
-  ggplot(aes(x = name, y = nb_births)) +
+  ggplot(aes(x = nb_births, y = name)) +
   # Add a column plot layer
   geom_col() +
   # Facet the plots by sex
@@ -140,21 +140,21 @@ We need to transform the data into a table that consists of the columns `sex`, `
 ```{r question-2-transform}
 tbl_names_popular_trendy = tbl_names |> 
   # Group by sex and name
-  ___(___, ___) |> 
+  group_by(sex , name) |> 
   # Summarize total number of births and max births in a year
   summarize(
-    nb_births_total = ___(___),
-    nb_births_max = ___(___),
+    nb_births_total = sum(nb_births),
+    nb_births_max = max(nb_births),
     .groups = "drop"
   ) |> 
   # Filter for names with at least 10000 births
-  ___(___ > ___) |> 
+  filter(nb_births_total > 10000) |> 
   # Add a column for trendiness computed as ratio of max to total
-  ___(___ = ___ / ___) |> 
+  mutate(trend = nb_births_max / nb_births_total) |> 
   # Group by sex
-  ___(___) |> 
+  group_by(sex) |> 
   # Slice top 5 rows by trendiness for each group
-  ___(___, n = ___)
+  slice_max(trend, n = 5)
 
 tbl_names_popular_trendy
 ```
@@ -173,16 +173,16 @@ Let us write a function that will accept a name as an argument and return a plot
 plot_trends_in_name <- function(my_name) {
   tbl_names |> 
     # Filter for name = my_name
-    ___(___ == my_name) |> 
+    filter(name == my_name) |> 
     # Initialize a ggplot of `nb_births` vs. `year` colored by `sex`
-    ___(___(x = ___, y = ___, color = ___)) +
+    ggplot(aes(x = year, y = nb_births, color = sex)) +
     # Add a line layer
-    ___() +
+    geom_line() +
     # Add labels (title, x, y)
     labs(
       title = glue::glue("Babies named {my_name} across the years!"),
-      x = '___',
-      y = '___'
+      x = 'Year',
+      y = 'No. of Births'
     ) +
     # Update plot theme
     theme(plot.title.position = "plot")
