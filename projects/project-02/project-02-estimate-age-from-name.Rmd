@@ -125,7 +125,10 @@ tbl_lifetables <- readr::read_csv(file_names_names, show_col_types = TRUE)
 
 # Print `tbl_lifetables`
 tbl_lifetables
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46864ad8cf75539421fa519e3e41769781a0673d
 ```
 
 It is always a good idea to plot the data to understand it better. Given that this is a table of probabilities of survival, let us plot the survival curve for a person to be alive in 2022 based on the year they were born.
@@ -321,11 +324,7 @@ plot_estimated_age <- function(tbl, my_name, my_sex) {
 
 tbl_names_extended |> 
   plot_estimated_age("Anna", "F")
-```
 
-Let us now get the top 25 most popular names for Females.
-
-```{r tbl-names-female-top-25}
 # Create `tbl_names_female_top_25` with name and sex for top 25 females
 tbl_names_female_top_25 <- tbl_names |>
   # Group by sex and name

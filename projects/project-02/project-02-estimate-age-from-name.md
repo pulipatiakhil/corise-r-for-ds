@@ -30,6 +30,7 @@ tbl_names <- readr::read_csv(file_name_names, show_col_types = TRUE)
 
 # Print tbl_names
 tbl_names
+<<<<<<< HEAD
 #> # A tibble: 2,052,781 × 4
 #>     year name      sex   nb_births
 #>    <dbl> <chr>     <chr>     <dbl>
@@ -44,6 +45,8 @@ tbl_names
 #>  9  1880 Bertha    F          1320
 #> 10  1880 Sarah     F          1288
 #> # ℹ 2,052,771 more rows
+=======
+>>>>>>> 46864ad8cf75539421fa519e3e41769781a0673d
 ```
 
 #### Lifetables
@@ -132,6 +135,7 @@ We already ran the code above and saved the data as
 # Read data/lifetables.csv.gz into a data frame named `tbl_lifetables`
 file_names_names <- here::here('data/lifetables.csv.gz')
 tbl_lifetables <- readr::read_csv(file_names_names, show_col_types = TRUE)
+<<<<<<< HEAD
 #> Rows: 5040 Columns: 9
 #> ── Column specification ────────────────────────────────────────────────────────
 #> Delimiter: ","
@@ -157,6 +161,11 @@ tbl_lifetables
 #>  9  1900 M         8 0.00305  77207   235 77090 3993046  51.7
 #> 10  1900 M         9 0.00256  76972   197 76874 3915956  50.9
 #> # ℹ 5,030 more rows
+=======
+
+# Print `tbl_lifetables`
+tbl_lifetables
+>>>>>>> 46864ad8cf75539421fa519e3e41769781a0673d
 ```
 
 It is always a good idea to plot the data to understand it better. Given
@@ -420,13 +429,15 @@ plot_estimated_age <- function(tbl, my_name, my_sex) {
 
 tbl_names_extended |> 
   plot_estimated_age("Anna", "F")
-```
 
+<<<<<<< HEAD
 <img src="img/plot-estimated-age-1.png" width="100%" style="display: block; margin: auto;" />
 
 Let us now get the top 25 most popular names for Females.
 
 ``` r
+=======
+>>>>>>> 46864ad8cf75539421fa519e3e41769781a0673d
 # Create `tbl_names_female_top_25` with name and sex for top 25 females
 tbl_names_female_top_25 <- tbl_names |>
   # Group by sex and name
@@ -444,6 +455,7 @@ tbl_names_female_top_25 <- tbl_names |>
 
 # Print `tbl_names_female_top_25`
   tbl_names_female_top_25
+<<<<<<< HEAD
 #> # A tibble: 25 × 2
 #>    name      sex  
 #>    <chr>     <chr>
@@ -458,6 +470,8 @@ tbl_names_female_top_25 <- tbl_names |>
 #>  9 Dorothy   F    
 #> 10 Sarah     F    
 #> # ℹ 15 more rows
+=======
+>>>>>>> 46864ad8cf75539421fa519e3e41769781a0673d
 ```
 
 Let us join `tbl_names_extended` with `tbl_names_female_top_25` so that
